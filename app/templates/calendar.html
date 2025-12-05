@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📅 Календарь событий</h1>
+        </header>
+
+        <div class="calendar-controls">
+            <button id="prevMonth">◀ Предыдущий</button>
+            <h2 id="currentMonth"></h2>
+            <button id="nextMonth">Следующий ▶</button>
+        </div>
+
+        <div class="calendar" id="calendar"></div>
+
+        <div class="events-section">
+            <h3>События</h3>
+            <button id="addEventBtn" class="btn-primary">+ Добавить событие</button>
+            <div id="eventsList"></div>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing events -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Новое событие</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Название:</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Описание:</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventStartTime">Начало:</label>
+                    <input type="datetime-local" id="eventStartTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventEndTime">Конец:</label>
+                    <input type="datetime-local" id="eventEndTime" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                    <button type="button" class="btn-secondary" id="cancelBtn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+</body>
+</html>
